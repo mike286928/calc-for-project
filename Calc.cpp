@@ -1,18 +1,28 @@
 #include <iostream>
 
 int main() {
-	setlocale(LC_ALL, "RU"); 
+	setlocale(LC_ALL, "RU");
 	int a, b;
 	char c;
 	std::cout << "Введите первое число: ";
-	std::cin >> a;
+	while (!(std::cin >> a)) { 
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
+		std::cout << "Ошибка! Введите число: ";
+	}
 	std::cout << "Введите второе число: ";
-	std::cin >> b;
+	while (!(std::cin >> b)) {
+		std::cin.clear();
+		std::cin.ignore(1000, '\n');
+		std::cout << "Ошибка! Введите число: ";
+	}
 	std::cout << "Введите операцию между двумя числами: ";
 	while (true) {
 		std::cin >> c;
 		if (c != '+' && c != '-' && c != '*' && c != '/') {
-			std::cout << "Неправильная операция! Повторите попытку.\n"; 
+			std::cin.clear();
+			std::cin.ignore(1000, '\n');
+			std::cout << "Неправильная операция! Повторите попытку.\n";
 		}
 		else break;
 	}
